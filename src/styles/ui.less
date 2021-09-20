@@ -1,0 +1,235 @@
+a {
+  color: @primary;
+  text-decoration: none;
+
+  &:hover {
+    color: @primary_hover;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-weight: 500;
+  font-family: @font_family;
+  color: @font;
+  margin: 25px 0px 20px;
+}
+h1, .h1 {
+  .font-size(36);
+  line-height: 1.1;
+  margin: 0px 0px 30px;
+}
+h2, .h2 {
+  .font-size(32);
+  line-height: 1.15;
+}
+h3, .h3 {
+  .font-size(24);
+  line-height: 1.15;
+}
+h4, .h4 {
+  .font-size(17);
+  line-height: 1.2;
+}
+
+.ui {
+  &-centered {
+    text-align: center;
+  }
+  &-lefted {
+    text-align: left;
+  }
+  &-righted {
+    text-align: right;
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+  &-lowercase {
+    text-transform: lowercase;
+  }
+
+  &-btn {
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 38px;
+    max-width: 100%;
+    border: 1px solid @primary;
+    border-radius: 10px;
+    padding: 0px 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: @primary;
+    color: #FFF;
+    text-align: center;
+    .font-size(15);
+    transition: background-color .15s;
+
+    &-block {
+      display: block;
+      width: 100%;
+    }
+    &-big {
+      height: 50px;
+      line-height: 48px;
+      .font-size(16);
+      padding: 0px 35px;
+    }
+
+    &:hover {
+      background-color: @primary_hover;
+      color: #FFF;
+    }
+    &:active {
+      background-color: @primary_active;
+      color: #efefef;
+    }
+
+    &-bordered {
+      background-color: #fff;
+      border-color: @border;
+      color: @font;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+        color: @font;
+      }
+      &:active {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: @font;
+      }
+    }
+  }
+
+  &-title {
+    .font-size(36);
+    line-height: 1.1;
+    margin: 0px 0px 30px;
+    font-weight: 500;
+  }
+
+
+  &-scroller {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: calc(100% + (100vw - 100%) / 2);
+    padding-right: calc((100vw - 100%) / 2);
+
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &-el {
+      max-width: calc(100vw - @col_gutter * 2);
+      margin-right: @col_gutter * 2;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+
+  &-margin {
+    margin-bottom: 50px;
+  }
+}
+
+svg.sprite {
+  max-width: 100%;
+  max-height: 100%;
+  transition: fill .3s, stroke .3s;
+}
+
+.ui-styler {
+  &-block {
+    display: block;
+    width: 100%;
+  }
+}
+.jq-selectbox {
+
+  &__select {
+    background: @bg_2;
+		// background: none !important;
+		.font-size(16);
+		text-shadow: none;
+		color: @font;
+		border: 0;
+		padding: 0px 32px 0px 20px;
+		height: 36px;
+		line-height: 36px;
+		max-width: 100%;
+		border-radius: 5px;
+		box-shadow: none !important;
+    cursor: pointer;
+    transition: background .15s;
+
+    &:hover {
+      background: @bg_3;
+    }
+  }
+
+  &__trigger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 32px;
+
+    &-arrow {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      margin-top: -7px;
+      margin-left: -7px;
+      background: url(../images/svg/arrow-down.svg) center no-repeat;
+      background-size: contain;
+      transition: transform .15s;
+    }
+  }
+
+  &__dropdown {
+    background: @bg_2;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    padding: 10px 0;
+    min-width: 100%;
+    top: 36px;
+
+    &[style*="top: auto;"] {
+      bottom: 36px;
+    }
+
+    li {
+      padding: 3px 20px;
+      color: @font_light;
+      cursor: pointer;
+
+      &.sel {
+        color: @font;
+      }
+      &:hover {
+        color: @primary;
+      }
+    }
+  }
+
+  &.opened {
+    .jq-selectbox__trigger-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
