@@ -188,3 +188,77 @@
     }
   }
 }
+
+
+
+/* --- AUTH PAGE --- */
+.page-centered {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-top: min(90px, 10vh);
+  padding-bottom: min(90px, 10vh);
+}
+.auth {
+  max-width: 370px;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 0px auto;
+
+  .ui-title, .h1, h1 {
+    margin-bottom: 20px;
+  }
+}
+.logo-ascetic {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+
+/* --- SELECT STUDENTS PAGE --- */
+.select-students {
+  max-width: 570px;
+  margin: 0px auto;
+  text-align: center;
+
+  &-list {
+    margin-top: 45px;
+  }
+  .ui-title, .h1, h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.student-card {
+  display: block;
+  width: 170px;
+  min-height: 250px;
+  border-radius: 20px;
+  padding-bottom: 15px;
+  border: 1px solid @border;
+  text-align: center;
+  color: @font;
+
+  &-photo {
+    padding: 20px;
+    background: @bg_1;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 15px;
+  }
+  &-name {
+    margin-bottom: 2px;
+    padding: 0px 15px;
+  }
+  &-role {
+    padding: 0px 15px;
+    color: @font_light;
+    .font-size(13);
+  }
+}
+a.student-card {
+  transition: border .15s;
+  
+  &:hover {
+    color: @font;
+    border-color: @primary;
+  }
+}

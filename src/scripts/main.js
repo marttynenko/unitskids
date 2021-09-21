@@ -77,6 +77,43 @@ function setValidatorDefaults() {
   }, "Некорректный формат");
 }
 
+function validatorInit() {
+  $('.form_auth').validate({
+    rules: {
+      email: {
+        email: true,
+        required: true
+      },
+      password: {
+        minlength: 8,
+        required: true
+      }
+    }
+  })
+
+  $('.form_recovery').validate({
+    rules: {
+      email: {
+        email: true,
+        required: true
+      },
+    }
+  });
+
+  $('.form_passwords').validate({
+    rules: {
+      password: {
+        required: true,
+        minlength: 8
+      },
+      password_new: {
+        required: true,
+        minlength: 8,
+        equalTo: $('.form_passwords input[name="password"]')
+      }
+    }
+  })
+}
 
 
 
@@ -132,10 +169,18 @@ if (document.querySelector('.profile-menu-notify')) {
   })
 }
 
+document.querySelectorAll('.ui-field-labeled').forEach(el => {
+  el.addEventListener('click',function(){
+    this.classList.add('filled')
+    this.querySelector('input').focus()
+  })
+})
+
 
 
 jQuery(document).ready(function($){
 
+  //лениво тянем формстайлер для темизации элементов форм
   if(document.querySelector('.ui-styler')) {
     FARBA.lazyLibraryLoad(
       '//cdnjs.cloudflare.com/ajax/libs/jQueryFormStyler/2.0.2/jquery.formstyler.min.js',
@@ -145,4 +190,33 @@ jQuery(document).ready(function($){
       }
     )
   }
+
+  if(document.querySelector('.ui-form')) {
+    FARBA.lazyLibraryLoad(
+      '//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js',
+      '',
+      () => {
+        setValidatorDefaults()
+        validatorInit()
+      }
+    )
+  }
+
+
+  //inputs and "live" labels
+  $(document).on('click','.ui-field-labeled',function(){
+    $(this).find('input').focus();
+    $(this).addClass('filled');
+  })
+  $(document).on('blur','.ui-field-labeled input',function(){
+    if (!this.value.length) {
+      $(this).closest('.ui-field-labeled').removeClass('filled')
+    }
+  })
+  $('.ui-field-labeled').each(function(index,el){
+    const input = $(this).find('input');
+    if (input.val().length) {
+      $(el).addClass('filled');
+    }
+  })
 });
