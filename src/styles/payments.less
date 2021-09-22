@@ -17,13 +17,22 @@
         height: 93px;
     }
     &-text {        
-        color: @font_light;
-        max-width: 218px;
+        color: @font_light;        
         text-align: center;
         margin-bottom: 25px;        
-    }
-    &-text-small {
-        white-space: nowrap;
+    } 
+    &-btn {
+        background-color: @primary;
+        color: #FFFFFF;
+        margin-bottom: 25px;
+        &:hover {
+            background-color: @primary_hover;  
+            color: #FFFFFF;          
+        }
+        &:active {
+            background-color: @primary_active;
+            color: #FFFFFF;
+        }
     }
     
 }
