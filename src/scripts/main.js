@@ -113,6 +113,33 @@ function validatorInit() {
       }
     }
   })
+
+  $('.form_account').validate({
+    rules: {
+      phone: {
+        telephone: true,
+      },
+      mail: {
+        email: true
+      },
+      oldpassword: {
+        minlength: 8,
+      },
+      password: {
+        minlength: 8,
+        required: function () {
+          return $('.form_account input[name="oldpassword"]').val()!=""
+        }
+      },
+      passwordretry: {
+        minlength: 8,
+        equalTo: $('.form_account input[name="password"]'),
+        required: function () {
+          return $('.form_account input[name="password"]').val()!=""
+        }
+      }
+    }
+  })
 }
 
 
@@ -121,8 +148,8 @@ function validatorInit() {
 const FARBA = {
 	//функция для навешивания изображений фоном
 	backgrounded (selector) {
-		$(selector).each(function(){
-			var $this = $(this),
+		$(selector).each(function(index,item){
+			var $this = $(item),
 			$src = $this.find('.ui-backgrounded-bg').attr('src');
 			if($this.find('.ui-backgrounded-bg').length) {
 				$this.addClass('backgrounded').css('backgroundImage','url('+$src+')');
@@ -144,8 +171,31 @@ const FARBA = {
 		}
 	
 		script.onload = callback
-	}
+	},
+
+  //предпросмотр загружаемого изображения
+  imgPreview(input, imgContainer) {
+    let isFiles = false;
+    if (input.files && input.files[0]){
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        const src = e.target.result
+        if ($(imgContainer).find('img').length) {
+          $(imgContainer).find('img').attr('src',src)
+          $(imgContainer).find('img').removeAttr('srcset')
+        } else {
+          $(imgContainer).prepend(`<img src="${src}" alt="photo preview"/>`)
+        }
+      }
+      isFiles = true;
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      isFiles = false;
+    }
+    return isFiles;
+  }
 }
+
 
 if (document.querySelector('.profile-notify-toggler')) {
   document.querySelector('.profile-notify-toggler').addEventListener('click',()=>{
@@ -160,6 +210,11 @@ if (document.querySelector('.profile-menu-toggler')) {
     document.querySelector('.profile-menu-drop').classList.toggle('active');
   })
 }
+$(document).on('mouseup',function(e){
+  if ($('.profile-menu').has(e.target).length === 0){
+    $('.profile-menu-drop').removeClass('active');
+  }
+});
 
 if (document.querySelector('.profile-menu-notify')) {
   document.querySelector('.profile-menu-notify').addEventListener('click',(e)=>{
@@ -168,13 +223,18 @@ if (document.querySelector('.profile-menu-notify')) {
     document.querySelector('.notifications').classList.add('active');
   })
 }
+$(document).on('mouseup',function(e){
+  if ($('.profile-notify').has(e.target).length === 0){
+    $('.notifications').removeClass('active');
+  }
+});
 
-document.querySelectorAll('.ui-field-labeled').forEach(el => {
-  el.addEventListener('click',function(){
-    this.classList.add('filled')
-    this.querySelector('input').focus()
-  })
-})
+// document.querySelectorAll('.ui-field-labeled').forEach(el => {
+//   el.addEventListener('click',function(){
+//     this.classList.add('filled')
+//     this.querySelector('input').focus()
+//   })
+// })
 
 
 
@@ -214,9 +274,25 @@ jQuery(document).ready(function($){
     }
   })
   $('.ui-field-labeled').each(function(index,el){
-    const input = $(this).find('input');
-    if (input.val().length) {
+    const input = $(el).find('input');
+    if (input.val() && input.val().length) {
       $(el).addClass('filled');
+    }
+  })
+
+
+  //предпросмотр фото профиля
+  $(document).on('change','.account-photo-input',function(e){
+    FARBA.imgPreview(this, '.account-photo-preview');
+  })
+
+
+  $(document).on('change','.student-card-input',function(e){
+    const container = $(this).closest('.student-card-photo');
+    const imgContainer = container.find('.student-card-img');
+    const isImg = FARBA.imgPreview(this, container);
+    if (isImg) {
+      container.find('.student-card-upload')[0].childNodes[0].nodeValue = 'Изменить фото';
     }
   })
 });

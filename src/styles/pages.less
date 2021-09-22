@@ -18,10 +18,13 @@
     }
   }
   &-label {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   &-student {
+    padding-top: 8px;
+    padding-bottom: 8px;
+
     &-name {
       color: @font;
     }
@@ -239,10 +242,29 @@
   color: @font;
 
   &-photo {
-    padding: 20px;
+    padding: 20px 20px 15px;
     background: @bg_1;
     border-radius: 20px 20px 0 0;
     margin-bottom: 15px;
+  }
+  &-img {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    overflow: hidden;
+    margin: 0px auto 5px;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      max-width: 160%;
+      min-width: 100%;
+      min-height: 100%;
+    }
   }
   &-name {
     margin-bottom: 2px;
@@ -253,12 +275,826 @@
     color: @font_light;
     .font-size(13);
   }
+  &-upload {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  &-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
 }
 a.student-card {
   transition: border .15s;
-  
+
   &:hover {
     color: @font;
     border-color: @primary;
+  }
+}
+
+
+/* --- ACCOUNT PAGE --- */
+.page {
+  padding-top: min(90px,10vh);
+  padding-bottom: min(30px,5vh);
+
+  &-title {
+    margin-bottom: 50px;
+  }
+  @media (max-width: 770px) {
+    &-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  }
+}
+.col-account-photo {
+  @media (min-width: 992px) {
+    order: 1;
+    flex: 0 0 (11.11%*4);
+    max-width: (11.11%*4);
+    margin-left: 11.11%;
+  }
+}
+.col-account-fields {
+  @media (min-width: 992px) {
+    flex: 0 0 (11.11%*4);
+    max-width: (11.11%*4);
+  }
+}
+.account-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0px 0px 25px;
+
+  li {
+    list-style: none;
+    display: block;
+  }
+  &-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    line-height: 1.2;
+    .font-size(16);
+    color: @font;
+    transition: background .15s;
+
+    &.active,
+    &:hover {
+      background-color: @bg_1;
+      color: @font;
+    }
+  }
+}
+
+.account-photo {
+  margin-bottom: 55px;
+
+  &-preview {
+    position: relative;
+    margin: 0px auto 15px;
+    width: 280px;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+    background: @bg_1 url(../images/svg/user-ava.svg) center no-repeat;
+    background-size: 50%;
+
+    &:after {
+      content: "";
+      padding-top: 100%;
+      display: block;
+    }
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 160%;
+    }
+  }
+
+  &-btn {
+    position: relative;
+    overflow: hidden;
+
+    input[type="file"] {
+      position: absolute;
+      opacity: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 992px) {
+    display: flex;
+    align-items: center;
+
+    &-preview {
+      flex: 0 0 125px;
+      max-width: 0 0 125px;
+      width: 125px;
+      margin-right: 15px;
+      margin-bottom: 0px;
+    }
+    &-btn {
+      flex: 0 0 calc(100% - 140px);
+      max-width: calc(100% - 140px);
+    }
+  }
+
+  @media (max-width: 770px) {
+    margin-bottom: 35px;
+  }
+
+  @media (max-width: 360px) {
+    &-preview {
+      flex: 0 0 100px;
+      max-width: 0 0 100px;
+      width: 100px;
+    }
+    &-btn {
+      flex: 0 0 calc(100% - 115px);
+      max-width: calc(100% - 115px);
+    }
+  }
+}
+.account-fields {
+  margin-bottom: 30px;
+}
+.account-save-status {
+  color: @primary;
+  text-align: center;
+  padding-top: 5px;
+  .font-size(13);
+}
+
+.purchases {
+  &-table {
+    margin-bottom: 24px;
+    color: @font_light;
+
+    &-event {
+      color: @font;
+
+      @media (min-width: 800px) {
+        width: 60%;
+      }
+    }
+    &-status {
+      text-align: right;
+      color: @primary;
+
+      &.error {
+        color: @invalid;
+      }
+    }
+  }
+}
+
+
+.childrens {
+  margin-bottom: 50px;
+
+  &-list {
+    margin-bottom: 15px;
+  }
+}
+
+.notifications-table {
+  td, th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  &-action {
+    text-align: right;
+  }
+  &-inner {
+    max-width: 460px;
+  }
+}
+
+
+/* --- TARIFFS --- */
+.tariffs {
+  margin-bottom: 30px;
+
+  &-items {
+    margin-bottom: 55px;
+  }
+}
+.tariff-item {
+  display: block;
+  position: relative;
+  // border: 1px solid @border;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 100%;
+  width: 270px;
+  cursor: pointer;
+
+  
+  &-border {
+    border: 1px solid @border;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 20px;
+  }
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+
+    &:checked + .tariff-item-border {
+      border-color: @primary;
+      box-shadow: inset 0px 0px 0px 1px @primary;
+    }
+  }
+  &-body {
+    padding: 10px 35px 20px;
+  }
+  &-title {
+    .font-size(20);
+    padding: 20px 20px 12px;
+    background: @bg_1;
+    font-weight: 500;
+    text-align: center;
+
+    &.tariff-pink {
+      background: rgba(255, 38, 137, 0.1);
+      color: @primary;
+    }
+    &.tariff-yellow {
+      background: rgba(255, 204, 0, 0.1);
+      color: @tertiary;
+    }
+    &.tariff-blue {
+      background: rgba(0, 212, 236, 0.1);
+      color: @secondary;
+    }
+    &.tariff-all {
+      position: relative;
+      background: linear-gradient(90deg, #00D3EC 3.61%, #EA30EB 61.17%, #FC993B 121.68%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(90deg, rgba(0, 211, 236, 0.1) 3.61%, rgba(234, 48, 235, 0.1) 61.17%, rgba(252, 153, 59, 0.1) 121.68%);
+      }
+    }
+  }
+  &-price {
+    .font-size(17);
+    font-weight: 500;
+    margin-bottom: 24px;
+    text-align: center;
+
+    &.tariff-pink {
+      color: @primary;
+    }
+    &.tariff-yellow {
+      color: @tertiary;
+    }
+    &.tariff-blue {
+      color: @secondary;
+    }
+    &.tariff-all {
+      background: linear-gradient(90deg, #00D3EC 3.61%, #EA30EB 61.17%, #FC993B 121.68%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+  }
+  &-label {
+    color: @font_light;
+    margin-bottom: 10px;
+  }
+  &-includes {
+    list-style: none;
+    padding: 0;
+
+    li {
+      position: relative;
+      margin-bottom: 7px;
+      padding-left: 20px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: .2em;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background: @font;
+      }
+    }
+
+    &.tariff-pink {
+      li:before {
+        background: @primary;
+      }
+    }
+    &.tariff-yellow {
+      li:before {
+        background: @tertiary;
+      }
+    }
+    &.tariff-blue {
+      li:before {
+        background: @secondary;
+      }
+    }
+    &.tariff-all {
+      li:before {
+        background: linear-gradient(90deg, #00D3EC 3.61%, #EA30EB 61.17%, #FC993B 121.68%);
+      }
+    }
+  }
+}
+
+
+/* --- LESSONS --- */
+.units-panel + .lessons-back {
+  margin-top: -25px;
+}
+.lessons-back {
+  margin-bottom: 25px;
+}
+.lessons-info {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  grid-template-areas: "descr img" "data img";
+  grid-column-gap: 30px;
+  margin-bottom: 30px;
+  border: 1px solid @border;
+  border-radius: 20px;
+  overflow: hidden;
+  color: @font_light;
+
+  &-img {
+    grid-area: img;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &-descr {
+    padding: 30px;
+    // margin-bottom: 50px;
+    color: @font_light;
+    grid-area: descr;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-title {
+    .font-size(36);
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: @font;
+  }
+
+  &-data {
+    grid-area: data;
+  }
+  &-progress {
+    max-width: 500px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &-values {
+      color: @font_light;
+      margin-bottom: 5px;
+    }
+    &-value {
+      color: @font;
+      .font-size(20);
+      font-weight: 500;
+    }
+    &-bar {
+      position: relative;
+      height: 10px;
+      border-radius: 5px;
+      background: @bg_1;
+    }
+    &-filled {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 5px;
+      min-width: 10px;
+      max-width: 100%;
+      background: linear-gradient(90deg, #00D3EC 3.61%, #EA30EB 61.17%, #FC993B 121.68%);
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    border-top: 1px solid @border;
+  }
+  &-includes,
+  &-manager {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+  }
+  &-includes {
+    border-right: 1px solid @border;
+    .font-size(13);
+
+    &-icon {
+      flex: 0 0 36px;
+      max-width: 36px;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      margin-right: 10px;
+      padding: 10px;
+      background: @bg_1;
+    }
+    &-lessons {
+      color: @font;
+      .font-size(15);
+    }
+  }
+  &-manager {
+    .font-size(13);
+
+    &-ava {
+      flex: 0 0 36px;
+      max-width: 36px;
+      border-radius: 18px;
+      height: 36px;
+      margin-right: 10px;
+
+      img {
+        max-height: 36px;
+        display: block;
+      }
+    }
+    &-name {
+      .font-size(15);
+      color: @font;
+    }
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 300px;
+    grid-template-areas: "descr img" "data data";
+
+    &-descr {
+      padding-right: 15px;
+    }
+  }
+
+  @media (max-width: 770px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "descr" "img" "data";
+
+    &-img {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &-progress {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    &-includes,
+    &-manager {
+      padding: 22px 15px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &-bottom {
+      display: block;
+    }
+    &-includes,
+    &-manager {
+      padding: 10px 15px;
+    }
+    &-includes {
+      border-right: 0;
+      border-bottom: 1px solid @border;
+    }
+  }
+}
+
+
+.lesson {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 12px 60px 12px 20px;
+  min-height: 60px;
+  border: 1px solid @border;
+  border-radius: 20px;
+  color: @font_light;
+  transition: border .15s;
+  opacity: 0.5;
+
+  &.lesson-active {
+    opacity: 1;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      width: 8px;
+      height: 12px;
+      margin-top: -6px;
+      background: url(../images/svg/next.svg) center no-repeat;
+      background-size: contain;
+      transition: transform .15s;
+    }
+
+    &:hover {
+      border-color: @primary;
+
+      &:after {
+        transform: translate(5px);
+      }
+    }
+  }
+
+  &:hover {
+    color: @font_light;
+  }
+
+  &-teacher {
+    flex: 0 0 210px;
+    max-width: 210px;
+    padding-right: 20px;
+  }
+  &-name {
+    color: @font;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    width: 100%;
+
+    &-icon {
+      flex: 0 0 20px;
+      max-width: 20px;
+      margin-right: 10px;
+      height: 24px;
+    }
+  }
+  &-feedback {
+    color: @primary;
+    flex: 0 0 165px;
+    max-width: 165px;
+    padding-right: 20px;
+  }
+  &-date {
+    text-align: right;
+    flex: 0 0 230px;
+    max-width: 230px;
+
+    &.pink {
+      color: @primary;
+    }
+  }
+
+  @media (max-width: 992px) {
+    &-teacher {
+      flex: 0 0 190px;
+      max-width: 190px;
+      padding-right: 15px;
+    }
+    &-date {
+      flex: 0 0 205px;
+      max-width: 205px;
+    }
+  }
+
+  @media (max-width: 770px) {
+    padding-right: 20px;
+
+    &.lesson-active {
+      padding-right: 40px;
+
+      &:after {
+        right: 20px;
+      }
+    }
+
+    &-teacher {
+      display: none;
+    }
+    &-name {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding-right: 10px;
+    }
+    &-date {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding-left: 10px;
+      padding-right: 0;
+    }
+    &-feedback {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding-left: 10px;
+      padding-right: 0;
+      text-align: right;
+    }
+    &-feedback + &-date {
+      display: none;
+    }
+  }
+}
+
+
+.lesson-card {
+  border: 1px solid @border;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 50px;
+
+  &-inner {
+    max-width: 585px;
+  }
+  &-coins {
+    color: @font_light;
+    margin-bottom: 10px;
+
+    &-value {
+      color: @font;
+      font-weight: 500;
+      .font-size(20);
+    }
+  }
+  &-feedback {
+    
+    &-title {
+      margin: 0px 0px 25px;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.lesson-info {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  grid-template-areas: 
+    "descr img"
+    "btns img"
+    "data img";
+  grid-column-gap: 30px;
+  margin-bottom: 30px;
+  border: 1px solid @border;
+  border-radius: 20px;
+  overflow: hidden;
+  color: @font_light;
+
+  &-img {
+    grid-area: img;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &-descr {
+    padding: 30px;
+    // margin-bottom: 50px;
+    color: @font_light;
+    grid-area: descr;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-title {
+    .font-size(36);
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: @font;
+  }
+
+  &-data {
+    grid-area: data;
+    align-self: end;
+  }
+  &-btns {
+    grid-area: btns;
+    align-self: end;
+  }
+
+  &-bottom {
+    display: flex;
+    border-top: 1px solid @border;
+  }
+  &-teacher {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+  }
+  &-teacher {
+    .font-size(13);
+
+    &-ava {
+      flex: 0 0 36px;
+      max-width: 36px;
+      border-radius: 18px;
+      height: 36px;
+      margin-right: 10px;
+
+      img {
+        max-height: 36px;
+        display: block;
+      }
+    }
+    &-name {
+      .font-size(15);
+      color: @font;
+    }
+  }
+  &-btns {
+    padding: 0px 30px 5px;
+
+    .ui-btn {
+      margin-right: 12px;
+      margin-bottom: 15px;
+      min-width: 230px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 300px;
+    grid-template-areas: "descr img" "btns img" "data data";
+
+    &-descr {
+      padding-right: 15px;
+    }
+    &-btns {
+      padding-right: 0;
+
+      .ui-btn {
+        min-width: 180px;
+      }
+    }
+  }
+
+  @media (max-width: 770px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "descr" "img" "btns" "data";
+
+    &-img {
+      margin-bottom: 20px;
+    }
+    &-btns {
+      padding-right: 30px;
+
+      .ui-btn {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+    &-teacher {
+      padding-top: 22px;
+      padding-bottom: 22px;
+    }
   }
 }

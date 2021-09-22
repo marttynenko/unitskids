@@ -1,7 +1,106 @@
 <!--#include file="inc-header.html"-->
 
 <div class="page">
+  <h1 class="page-title">Мой профиль</h1>
 
-</div>
+  <form class="ui-form form_account">
+    <div class="row">
+      <div class="col-account-menu col-md-2 col-sm-2">
+        <ul class="account-menu">
+          <li><a class="account-menu-link active" href="#">О себе</a></li>
+          <li><a class="account-menu-link" href="#">Дети</a></li>
+          <li><a class="account-menu-link" href="#">Покупки</a></li>
+          <li><a class="account-menu-link" href="#">Уведомления</a></li>
+        </ul>
+      </div><!--.col-menu-->
+
+      <div class="col-account-body col-md-9 col-offset-md-1 col-sm-4 col-offset-sm-1">
+        <div class="row">
+          <div class="col-account-photo">
+            <div class="account-photo">
+              <div class="account-photo-preview"></div>
+              <div class="account-photo-btn ui-btn ui-btn-block">
+                <div class="account-photo-btn-label">Загрузить фото</div>
+                <input type="file" name="account_photo" class="account-photo-input" accept=".jpg,.jpeg,.png,.webp">
+              </div>
+            </div>
+          </div><!--.col-account-photo-->
+    
+          <div class="col-account-fields">
+    
+            <div class="account-fiels">
+              <div class="ui-form-group">
+                <div class="ui-field ui-field-labeled">
+                  <input type="text" class="ui-input" name="name" disabled value="Анастасия">
+                  <label for="name" class="ui-label">Имя</label>
+                </div>
+        
+                <div class="ui-field ui-field-labeled">
+                  <input type="text" class="ui-input" name="lastname" disabled value="Константинопольская">
+                  <label for="lastname" class="ui-label">Фамилия</label>
+                </div>
+        
+                <div class="ui-field ui-field-labeled">
+                  <input type="tel" class="ui-input" name="phone" disabled value="+7 (918) 192-11-00">
+                  <label for="phone" class="ui-label">Телефон</label>
+                </div>
+        
+                <div class="ui-field ui-field-labeled">
+                  <input type="email" class="ui-input" name="mail" disabled value="anastasia@gmail.com">
+                  <label for="mail" class="ui-label">Почта</label>
+                </div>
+    
+                <div class="ui-hint">Для смены данных <a href="#">напишите менеджеру</a></div>
+              </div><!--.group-->
+    
+              <div class="ui-form-group">
+                <div class="ui-field ui-field-labeled">
+                  <input type="text" class="ui-input ui-date" name="date">
+                  <label for="date" class="ui-label">Дата рождения</label>
+                </div>
+    
+                <div class="ui-field ui-field-labeled">
+                  <input type="text" class="ui-input" name="city">
+                  <label for="city" class="ui-label">Город</label>
+                </div>
+    
+                <div class="ui-field ui-field-labeled">
+                  <select name="sex" class="ui-styler ui-input">
+                    <option value="1">Мужской</option>
+                    <option value="2">Женский</option>
+                  </select>
+                  <label for="sex" class="ui-label">Пол</label>
+                </div>
+    
+                <div class="ui-field ui-field-labeled">
+                  <input type="password" class="ui-input" name="oldpassword">
+                  <label for="oldpassword" class="ui-label">Старый пароль</label>
+                </div>
+    
+                <div class="ui-field ui-field-labeled">
+                  <input type="password" class="ui-input" name="password">
+                  <label for="password" class="ui-label">Новый пароль</label>
+                </div>
+    
+                <div class="ui-field ui-field-labeled">
+                  <input type="password" class="ui-input" name="passwordretry">
+                  <label for="passwordretry" class="ui-label">Повторите новый пароль</label>
+                </div>
+    
+              </div>
+    
+              <button class="ui-btn ui-btn-block ui-btn-big" type="submit">Сохранить</button>
+              <div class="account-save-status">Данные сохранены</div>
+            </div><!--.account-fields-->
+            
+          </div><!--.col-account-fields-->
+        </div>
+      </div>
+
+      
+    </div>
+  </form>
+
+</div><!--.page-->
 
 <!--#include file="inc-footer.html"-->
