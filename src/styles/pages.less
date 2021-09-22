@@ -213,7 +213,7 @@
 }
 .logo-ascetic {
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 
@@ -249,7 +249,7 @@
   }
   &-img {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 110px;
     height: 110px;
     border-radius: 55px;
@@ -279,6 +279,12 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    color: @primary;
+    .font-size(13);
+
+    &:hover {
+      color: @primary_hover;
+    }
   }
   &-input {
     position: absolute;
@@ -498,6 +504,10 @@ a.student-card {
   &-items {
     margin-bottom: 55px;
   }
+  &-btn {
+    width: 370px;
+    padding: 0px 5px;
+  }
 }
 .tariff-item {
   display: block;
@@ -686,6 +696,8 @@ a.student-card {
 
   &-data {
     grid-area: data;
+    align-self: end;
+    margin-right: -30px;
   }
   &-progress {
     max-width: 500px;
@@ -1015,6 +1027,7 @@ a.student-card {
   &-data {
     grid-area: data;
     align-self: end;
+    margin-right: -30px;
   }
   &-btns {
     grid-area: btns;
