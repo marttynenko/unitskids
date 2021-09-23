@@ -60,6 +60,7 @@ const copyAll = async () => {
             './src/scripts/**/*',
             './src/fonts/**/*',
             './src/svg/**/*',
+            './src/popups/**/*',
             './src/*.html',
             './src/.htaccess',
         ],

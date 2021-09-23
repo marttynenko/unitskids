@@ -229,14 +229,6 @@ $(document).on('mouseup',function(e){
   }
 });
 
-// document.querySelectorAll('.ui-field-labeled').forEach(el => {
-//   el.addEventListener('click',function(){
-//     this.classList.add('filled')
-//     this.querySelector('input').focus()
-//   })
-// })
-
-
 
 jQuery(document).ready(function($){
 
@@ -261,6 +253,50 @@ jQuery(document).ready(function($){
       }
     )
   }
+
+
+  if (document.querySelector('.mfp-link')) {
+    FARBA.lazyLibraryLoad(
+      '//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css',
+      null
+    )
+  }
+
+  if (document.querySelector('.mfp-link')) {
+    FARBA.lazyLibraryLoad(
+      '//cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css',
+      null
+    )
+  }
+
+  $(document).on('click','.mfp-link',function(e){
+		e.preventDefault();
+		let link = $(this);
+		let href = link.attr('data-href');
+
+		if (href && href.length) {
+			$.magnificPopup.open({
+				items: { src: href },
+				type: 'ajax',    
+				overflowY: 'scroll',
+				// removalDelay: 610,
+				mainClass: 'my-mfp-zoom-in',
+				ajax: {
+					tError: 'Ошибка. <a href="%url%">Контент</a> не может быть загружен',
+				},
+				callbacks: {
+					open: function () {
+						setTimeout(function(){
+							$('.mfp-wrap, .mfp-bg').addClass('delay-back');
+							$('.mfp-popup').addClass('delay-back');
+						},700);
+					}
+				}
+			});
+		}
+	});
 
 
   //inputs and "live" labels
