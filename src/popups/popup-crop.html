@@ -13,6 +13,7 @@
     </div>
   </div>
   <script>
+  jQuery(document).ready(function($){
     const imgToCrop = document.querySelector('img.popup-crop-img');
     const submitBtn = document.querySelector('#popup_crop_submit');
     const input = document.querySelector('#popup_crop_input');
@@ -89,5 +90,6 @@
     input.addEventListener('change',function(e) {
       changePhoto(e.target)
     })
+  });
   </script>
 </div>
