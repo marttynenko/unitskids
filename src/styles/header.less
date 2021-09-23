@@ -30,12 +30,41 @@ header.header {
   height: 36px;
   line-height: 36px;
   white-space: nowrap;
-  padding: 0px 25px;
+  width: 180px;
+  max-width: 100%;
+  padding: 0px 5px;
   border-radius: 18px;
   background: rgba(255, 38, 137, 0.1);
   color: @primary;
   .font-size(16);
   text-align: center;
+
+  &.profile-standart {
+    background: #FFFAE6;
+    color: @tertiary;
+  }
+  &.profile-optimal {
+    background: rgba(0, 212, 236, 0.1);
+    color: @secondary;
+  }
+  &.profile-all {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #00D3EC 3.61%, #EA30EB 61.17%, #FC993B 121.68%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 211, 236, 0.1) 3.61%, rgba(234, 48, 235, 0.1) 61.17%, rgba(252, 153, 59, 0.1) 121.68%);
+    }
+  }
 }
 
 .profile-notify {
@@ -45,7 +74,7 @@ header.header {
   margin-right: 30px;
   text-align: left;
   min-width: 1px;
-  height: 36px;
+  // height: 36px;
 
   &-toggler {
     height: 30px;
@@ -231,6 +260,12 @@ header.header {
     transform: translate3d(0,0px,0);
   }
 
+  &-none {
+    color: @font_light;
+    text-align: center;
+    padding: 45px 0px 50px;
+  }
+
   &-list {
     max-height: 350px;
     max-height: calc(100vh - 150px);
@@ -284,6 +319,7 @@ header.header {
 @media (max-width: 576px) {
   .profile-notify {
     margin-right: 0;
+    height: 36px;
 
     &-toggler {
       display: none;

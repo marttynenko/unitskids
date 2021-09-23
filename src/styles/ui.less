@@ -134,6 +134,15 @@ table {
     width: calc(100% + (100vw - 100%) / 2);
     padding-right: calc((100vw - 100%) / 2);
 
+    @media (min-width: 992px) {
+      flex-wrap: wrap;
+      width: auto;
+      padding-right: 0;
+      overflow: visible;
+      margin-left: -@col_gutter;
+      margin-right: -@col_gutter;
+    }
+
 
     &::-webkit-scrollbar {
       display: none;
@@ -142,6 +151,14 @@ table {
     &-el {
       max-width: calc(100vw - @col_gutter * 2);
       margin-right: @col_gutter * 2;
+
+      @media (min-width: 992px) {
+        margin-bottom: @col_gutter * 2;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: @col_gutter;
+        padding-right: @col_gutter;
+      }
 
       @media (max-width: 576px) {
         margin-right: @col_gutter;
@@ -273,6 +290,35 @@ table {
       }
     }
   }
+
+  &-mark {
+    display: inline-block;
+    padding: 0px 5px;
+    color: @font;
+    background: @tertiary;
+    border-radius: 2px;
+    margin: 2px 0;
+    font-weight: 500;
+
+    &-block {
+      padding: 10px;
+      margin-bottom: 20px;
+      color: @font;
+      background: @bg_3;
+      border: 1px solid #c5c5c5;
+      font-weight: 500;
+    }
+  }
+
+  &-hr {
+    margin: 35px 0;
+    height: 1px;
+    background: @border;
+  }
+  
+  &-font-secondary {
+    .font-size(13);
+  }
 }
 span.invalid {
   display: inline-block;
@@ -319,6 +365,10 @@ svg.sprite {
 		box-shadow: none !important;
     cursor: pointer;
     transition: background .15s;
+
+    &-text {
+      width: auto;
+    }
 
     &:hover {
       background: @bg_3;
@@ -388,7 +438,7 @@ svg.sprite {
       &__select {
         height: 55px;
         line-height: 53px;
-        padding: 10px 32px 0px 15px;
+        padding: 0px 32px 0px 15px;
         background: #FFF;
         border: 1px solid @border;
       }
@@ -398,7 +448,7 @@ svg.sprite {
         border: 1px solid @border;
 
         &[style*="top: auto;"] {
-          bottom: 36px;
+          bottom: 55px;
         }
       }
     }
@@ -408,4 +458,11 @@ svg.sprite {
   z-index: 10;
   .font-size(13);
   transform: translate3d(0,-10px,0);
+}
+.ui-field-labeled .ui-styler  {
+  .jq-selectbox {
+    &__select {
+      padding-top: 10px;
+    }
+  }
 }

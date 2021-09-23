@@ -6,12 +6,12 @@
   color: @font_light;
 
   &-col {
-    padding: 15px 35px;
+    padding: 15px 35px 16px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     
     &:not(:last-child) {
       border-right: 1px solid @border;
@@ -148,10 +148,19 @@
     .ui-btn-big {
       padding: 0px 20px;
     }
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .ui-btn {
+        flex: 0 0 65%;
+        max-width: 65%;
+        padding: 0px 10px;
+      }
+    }
   }
   &-status {
     color: @font_light;
     .font-size(13);
+    text-align: right;
+    padding-left: 10px;
   }
 
   &-completed {
@@ -170,6 +179,14 @@
   @media (max-width: 770px) {
     .ui-title {
       text-align: center;
+    }
+  }
+  &-list {
+    @media (min-width: 992px) {
+      .ui-scroller-el {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
     }
   }
 }
@@ -225,6 +242,16 @@
 
   &-list {
     margin-top: 45px;
+
+    @media (min-width: 992px) {
+      .ui-scroller {
+        justify-content: center;
+      }
+      .ui-scroller-el {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+    }
   }
   .ui-title, .h1, h1 {
     margin-bottom: 20px;
@@ -479,7 +506,9 @@ a.student-card {
   margin-bottom: 50px;
 
   &-list {
-    margin-bottom: 15px;
+    @media (max-width: 992px) {
+      margin-bottom: 15px;
+    }
   }
 }
 
@@ -832,8 +861,8 @@ a.student-card {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  padding: 12px 60px 12px 20px;
-  min-height: 60px;
+  padding: 5px 60px 5px 20px;
+  height: 60px;
   border: 1px solid @border;
   border-radius: 20px;
   color: @font_light;
@@ -873,8 +902,11 @@ a.student-card {
     flex: 0 0 210px;
     max-width: 210px;
     padding-right: 20px;
+    max-height: 40px;
+    overflow: hidden;
   }
   &-name {
+    position: relative;
     color: @font;
     display: flex;
     align-items: center;
@@ -887,17 +919,34 @@ a.student-card {
       margin-right: 10px;
       height: 24px;
     }
+    &-name {
+      overflow: hidden;
+      max-height: 40px;
+    }
+    &:after {
+      width: 60px;
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0), #FFF 80%);
+    }
   }
   &-feedback {
     color: @primary;
     flex: 0 0 165px;
     max-width: 165px;
     padding-right: 20px;
+    max-height: 40px;
+    overflow: hidden;
   }
   &-date {
     text-align: right;
     flex: 0 0 230px;
     max-width: 230px;
+    max-height: 40px;
+    overflow: hidden;
 
     &.pink {
       color: @primary;
@@ -1108,5 +1157,15 @@ a.student-card {
       padding-top: 22px;
       padding-bottom: 22px;
     }
+  }
+}
+
+
+
+/* --- DEMO --- */
+.demo {
+  max-width: 570px;
+  .ui-btn + .ui-btn {
+    margin-left: 10px;
   }
 }
