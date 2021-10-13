@@ -212,10 +212,14 @@
 			<path d="M68.188 48.33c-5.295 3.681-11.666 5.664-18.204 5.664-6.537 0-12.908-1.983-18.203-5.664-9.36 3.516-17.4 9.66-23.07 17.628C3.043 73.926.007 83.35 0 93c0 .796.33 1.559.915 2.121.586.563 1.381.879 2.21.879h93.75c.829 0 1.624-.316 2.21-.879A2.94 2.94 0 0 0 100 93c-.009-9.653-3.05-19.08-8.724-27.049-5.676-7.969-13.722-14.11-23.088-17.621zM50 48c13.807 0 25-10.745 25-24S63.807 0 50 0 25 10.745 25 24s11.193 24 25 24z" fill="#E7E7E7"></path>
 		</symbol>
 	
+		<symbol id="users" viewBox="0 0 24 24">
+			<path d="M9 3a5 5 0 1 0 0 10A5 5 0 0 0 9 3zM6 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0zM16.908 8.218A2 2 0 0 0 16 8V6a4 4 0 1 1-2.357 7.232l1.178-1.616a2 2 0 1 0 2.087-3.398zM19.998 21A3.999 3.999 0 0 0 16 17.002V15a6.001 6.001 0 0 1 6 6h-2.002zM16 21h-2a5 5 0 0 0-10 0H2a7 7 0 1 1 14 0z" fill="#1D1D1D"></path>
+		</symbol>
+	
 </svg>
 
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(14 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(15 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -468,6 +472,23 @@
             <button onclick="invertBackground('icon-box-user-ava')">Invert Background</button>
             <div class="snippet-popover" id="snippet-user-ava">
                 <pre><code>&lt;svg class=&quot;icon user-ava&quot;&gt;&lt;use xlink:href=&quot;#user-ava&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+
+        <li title="users">
+            <div class="icon-box" id="icon-box-users">
+                <svg class="icon users">
+                    <use xlink:href="#users" />
+                </svg>
+            </div>
+            <h2>users</h2>
+            <button onclick="showPopover('snippet-users')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-users')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-users">
+                <pre><code>&lt;svg class=&quot;icon users&quot;&gt;&lt;use xlink:href=&quot;#users&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>
